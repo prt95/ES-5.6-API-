@@ -36,8 +36,7 @@
 								"1",
 								"_update"
 							]
-						},
-						"description": "?v is used to get the header names"
+						}
 					},
 					"response": [
 						{
@@ -121,6 +120,261 @@
 							]
 						},
 						"description": "?v is used to get the header names"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "upsert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"script\" : \"ctx._source.age += 1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/customer/external/1/_update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"customer",
+								"external",
+								"1",
+								"_update"
+							]
+						},
+						"description": "If the document does not already exist, the contents of the upsert element will be inserted as a new document. If the document does exist, then the doc will be updates\n\n"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "update by query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/customer/external/_update_by_query?conflicts=proceed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"customer",
+								"external",
+								"_update_by_query"
+							],
+							"query": [
+								{
+									"key": "conflicts",
+									"value": "proceed"
+								}
+							]
+						},
+						"description": "_update_by_query just performs an update on every document in the index without changing the source. This is useful to pick up a new property or some other online mapping change."
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "update by query using script",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"script\": {\n    \"source\": \"ctx._source.account_number++\",\n    \"lang\": \"painless\"\n  },\n  \"query\": {\n    \"term\": {\n      \"address\": \"mill\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_update_by_query?conflicts=proceed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_update_by_query"
+							],
+							"query": [
+								{
+									"key": "conflicts",
+									"value": "proceed"
+								}
+							]
+						},
+						"description": "_update_by_query just performs an update on every document in the index without changing the source. This is useful to pick up a new property or some other online mapping change."
 					},
 					"response": [
 						{
@@ -626,73 +880,50 @@
 								"description": "allows to use a query to restrict the documents that will be matched by other clauses, without changing how scores are computed.\n\nIn the eg. documents falling into the range all match \"equally\", i.e., no document is more relevant than another."
 							},
 							"response": []
+						},
+						{
+							"name": "named queries",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"bool\" : {\n            \"should\" : [\n                {\"match\" : { \"firstname\" : {\"query\" : \"Liz\", \"_name\" : \"first\"} }},\n                {\"match\" : { \"lastname\" : {\"query\" : \"l\", \"_name\" : \"last\"} }}\n            ],\n            \"filter\" : {\n                \"terms\" : {\n                    \"firstname\" : [\"liz\"],\n                    \"_name\" : \"test\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/bank/account/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"bank",
+										"account",
+										"_search"
+									]
+								},
+								"description": "each condition in the bool can be named\n"
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Get docs of a type",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9200/bank/account/_search",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"bank",
-								"account",
-								"_search"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get docs of a type with limit on no. of docs",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9200/bank/account/_search?q=*&sort=account_number:asc&size=3&pretty",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"bank",
-								"account",
-								"_search"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "*",
-									"description": "to match all documents in the index"
-								},
-								{
-									"key": "sort",
-									"value": "account_number:asc",
-									"description": "sort the results using the account_number field of each document in an ascending order."
-								},
-								{
-									"key": "size",
-									"value": "3",
-									"description": "no of documents to be fetched \n"
-								},
-								{
-									"key": "pretty",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
 				},
 				{
 					"name": "Get docs of type sorted by some field",
@@ -731,56 +962,6 @@
 					"response": []
 				},
 				{
-					"name": "match_all query",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"query\": { \"match_all\": {} },\n  \"size\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:9200/bank/_search",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"bank",
-								"_search"
-							]
-						},
-						"description": "The match_all query is simply a search for all documents in the specified index.\n\nIn addition to the query parameter, we also can pass other parameters to influence the search results.\n\nNote that if size is not specified, it defaults to 10\n"
-					},
-					"response": []
-				},
-				{
-					"name": "Fast check for any matching doc",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "pagination using from and size",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -798,45 +979,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"query\": { \"match_all\": {} },\n  \"from\": 1,\n  \"size\": 4\n  \n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:9200/bank/account/_search",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"bank",
-								"account",
-								"_search"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "filter source fields",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": " {\"query\": { \"match_all\": {} },\n  \"_source\": [\"account_number\", \"balance\"]\n }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -939,85 +1081,7 @@
 					"response": []
 				},
 				{
-					"name": "Get document by id",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:9200/customer/external/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"customer",
-								"external",
-								"1"
-							]
-						},
-						"description": "By default, the get API is realtime, and is not affected by the refresh rate of the index (when data will become visible for search). If a document has been updated but is not yet refreshed, the get API will issue a refresh call in-place to make the document visible. This will also make other documents changed since the last refresh visible. In order to disable realtime GET, one can set the realtime parameter to false."
-					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
-							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-						}
-					]
-				},
-				{
-					"name": "response filtering",
+					"name": "match_none",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1026,16 +1090,62 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"query\":{\n\t\t\"match_none\":{\n\t\t\n\t\t}\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:9200/bank/_search?q=mill&filter_path=took,hits.hits._id,hits.hits._score",
-							"protocol": "http",
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "may be used when query is generated dynamically\n"
+					},
+					"response": []
+				},
+				{
+					"name": "match_all query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": { \"match_all\": {} },\n  \"size\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/_search",
 							"host": [
 								"localhost"
 							],
@@ -1043,75 +1153,14 @@
 							"path": [
 								"bank",
 								"_search"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "mill"
-								},
-								{
-									"key": "filter_path",
-									"value": "took,hits.hits._id,hits.hits._score"
-								}
 							]
 						},
-						"description": "https://www.elastic.co/guide/en/elasticsearch/reference/5.6/common-options.html"
+						"description": "The match_all query is simply a search for all documents in the specified index.\n\nIn addition to the query parameter, we also can pass other parameters to influence the search results.\n\nNote that if size is not specified, it defaults to 10\n"
 					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
-							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-						}
-					]
+					"response": []
 				},
 				{
-					"name": "filter source using query param",
+					"name": "multi_match",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1120,15 +1169,22 @@
 						"header": [
 							{
 								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
 								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"query\": {\n    \"multi_match\" : {\n      \"query\":    \"Lee\", \n      \"fields\": [ \"address\", \"*name\" ] \n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "localhost:9200/bank/account/0?_source_include=balance&_source_exclude=state",
+							"raw": "localhost:9200/bank/account/_search",
 							"host": [
 								"localhost"
 							],
@@ -1136,75 +1192,15 @@
 							"path": [
 								"bank",
 								"account",
-								"0"
-							],
-							"query": [
-								{
-									"key": "_source_include",
-									"value": "balance"
-								},
-								{
-									"key": "_source_exclude",
-									"value": "state"
-								}
+								"_search"
 							]
-						}
+						},
+						"description": "search in different fields\n\n\n"
 					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
-							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-						}
-					]
+					"response": []
 				},
 				{
-					"name": "get only the source field of the document",
+					"name": "term",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1213,15 +1209,22 @@
 						"header": [
 							{
 								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
 								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"query\" : {\n        \"term\" : {\n            \"address\": \"mill\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "localhost:9200/bank/account/0/_source",
+							"raw": "localhost:9200/bank/account/_search",
 							"host": [
 								"localhost"
 							],
@@ -1229,63 +1232,407 @@
 							"path": [
 								"bank",
 								"account",
-								"0",
-								"_source"
+								"_search"
+							]
+						},
+						"description": "not analyzed.\nexact match \n\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "terms basic",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"constant_score\" : {\n            \"filter\" : {\n                \"terms\" : { \"address\" : [\"mill\", \"lane\"]}\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "Filters documents that have fields that match any of the provided terms (not analyzed).\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "terms",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\" : {\n        \"term\" : {\n            \"address\": \"mill\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "Filters documents that have fields that match any of the provided terms (not analyzed).\n\n\ngiven ex:\nAt first we index the information for user with id 2, specifically, its followers, then index a tweet from user with id 1. Finally we search on all the tweets that match the followers of user 2.\n\nsearching on one index using another index"
+					},
+					"response": []
+				},
+				{
+					"name": "range",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"range\": {\n            \"balance\": {\n                \"gte\": 1000,\n                \"lte\": 2000\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
+					"response": []
+				},
+				{
+					"name": "exists",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"exists\": {\n            \"field\": \"balance\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
 							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "Returns documents that have at least one non-null value in the original field"
+					},
+					"response": []
+				},
+				{
+					"name": "build a missing query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":{\n\t\t\"bool\":{\n\t\t\t\"must_not\":[\n\t\t\t\t{\n\t\t\t\t\t\"exists\":{\n\t\t\t\t\t\t\"field\":\"balance\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t]\n\t\t}\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "use must_not with exists"
+					},
+					"response": []
+				},
+				{
+					"name": "prefix",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"prefix\": {\n            \"firstname\": \"li\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "wildcard",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"wildcard\": {\n            \"firstname\": \"li*z\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						},
+						"description": "Matches documents that have fields matching a wildcard expression (not analyzed). Supported wildcards are *, which matches any character sequence (including the empty one), and ?, which matches any single character. Note that this query can be slow, as it needs to iterate over many terms. In order to prevent extremely slow wildcard queries, a wildcard term should not start with one of the wildcards * or ?."
+					},
+					"response": []
+				},
+				{
+					"name": "type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"type\" : {\n            \"value\" : \"account\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_search"
+							]
+						},
+						"description": "can be useful with dynamic types"
+					},
+					"response": []
+				},
+				{
+					"name": "ids",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"ids\" : {\n            \"type\" : \"account\",\n            \"values\" : [\"1\", \"4\", \"100\"]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_search"
+							]
+						},
+						"description": "can be useful with dynamic types"
+					},
+					"response": []
+				},
+				{
+					"name": "constant_score",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"constant_score\" : {\n            \"filter\" : {\n                \"term\" : { \"address\" : \"mill\"}\n            },\n            \"boost\" : 1.2\n        }\n    }\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_search"
+							]
+						},
+						"description": "filter vs constant_score\n:\nboth won't calculate score\nbut with constant_score you can give a score to the docs\nex with filter:\n{\n    \"query\": {\n    \t\"bool\":{\n        \"filter\": {\n            \"term\": {\n                \"address\": \"mill\"\n            }\n        }\n    \t}\n    }\n}"
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1293,6 +1640,101 @@
 		{
 			"name": "basic",
 			"item": [
+				{
+					"name": "Get elastic search info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200"
+						},
+						"description": "get elastic search info"
+					},
+					"response": []
+				},
+				{
+					"name": "get list of nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_cat/nodes?v",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						},
+						"description": "?v is used to get the header names"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
 				{
 					"name": "Get cluster health",
 					"request": {
@@ -1446,12 +1888,12 @@
 					]
 				},
 				{
-					"name": "get list of nodes",
+					"name": "Get all indices",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9200/_cat/nodes?v",
+							"raw": "http://localhost:9200/_cat/indices?v",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1459,7 +1901,7 @@
 							"port": "9200",
 							"path": [
 								"_cat",
-								"nodes"
+								"indices"
 							],
 							"query": [
 								{
@@ -1470,58 +1912,48 @@
 						},
 						"description": "?v is used to get the header names"
 					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
+					"response": []
+				},
+				{
+					"name": "Get mapping of an index ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/bank/_mapping",
+							"protocol": "http",
+							"host": [
+								"localhost"
 							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+							"port": "9200",
+							"path": [
+								"bank",
+								"_mapping"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Get mapping of a type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_mapping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_mapping"
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "Delete an index",
@@ -1546,84 +1978,6 @@
 							"port": "9200",
 							"path": [
 								"customer"
-							]
-						},
-						"description": "?v is used to get the header names"
-					},
-					"response": [
-						{
-							"name": "Get cluster health",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:9200/_cat/health?v",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "9200",
-									"path": [
-										"_cat",
-										"health"
-									],
-									"query": [
-										{
-											"key": "v",
-											"value": null
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "content-encoding",
-									"value": "gzip",
-									"name": "content-encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "content-length",
-									"value": "192",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"key": "content-type",
-									"value": "text/plain; charset=UTF-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
-								}
-							],
-							"cookie": [],
-							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-						}
-					]
-				},
-				{
-					"name": "Checking for existence of a document",
-					"request": {
-						"method": "HEAD",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:9200/bank/account/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"bank",
-								"account",
-								"1"
 							]
 						},
 						"description": "?v is used to get the header names"
@@ -2027,144 +2381,1041 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Get elastic search info",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200"
+			"name": "Fetch ",
+			"item": [
+				{
+					"name": "Get docs of a type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						}
+					},
+					"response": []
 				},
-				"description": "get elastic search info"
-			},
-			"response": []
-		},
-		{
-			"name": "Get all indices",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/_cat/indices?v",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"_cat",
-						"indices"
-					],
-					"query": [
+				{
+					"name": "Get docs of a type with limit on no. of docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_search?q=*&sort=account_number:asc&size=3&pretty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "*",
+									"description": "to match all documents in the index"
+								},
+								{
+									"key": "sort",
+									"value": "account_number:asc",
+									"description": "sort the results using the account_number field of each document in an ascending order."
+								},
+								{
+									"key": "size",
+									"value": "3",
+									"description": "no of documents to be fetched \n"
+								},
+								{
+									"key": "pretty",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter source fields",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"query\": { \"match_all\": {} },\n  \"_source\": [\"account_number\", \"balance\"]\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get document by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/customer/external/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"customer",
+								"external",
+								"1"
+							]
+						},
+						"description": "By default, the get API is realtime, and is not affected by the refresh rate of the index (when data will become visible for search). If a document has been updated but is not yet refreshed, the get API will issue a refresh call in-place to make the document visible. This will also make other documents changed since the last refresh visible. In order to disable realtime GET, one can set the realtime parameter to false."
+					},
+					"response": [
 						{
-							"key": "v",
-							"value": null
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
 						}
 					]
 				},
-				"description": "?v is used to get the header names"
-			},
-			"response": []
-		},
-		{
-			"name": "Get mapping of an index ",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/bank/_mapping",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"bank",
-						"_mapping"
+				{
+					"name": "filter source using query param",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/0?_source_include=balance&_source_exclude=state",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"0"
+							],
+							"query": [
+								{
+									"key": "_source_include",
+									"value": "balance"
+								},
+								{
+									"key": "_source_exclude",
+									"value": "state"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get mapping of a type",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/bank/account/_mapping",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"bank",
-						"account",
-						"_mapping"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get template by id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9200/_search/template/thread-dump-history",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"_search",
-						"template",
-						"thread-dump-history"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "render a template",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": \"thread-dump-history\",\n\t \"params\": {\n                \"instance_id\": \"localhost:cfusion:8503\",\n                \"max_time\": \"now\",\n                \"min_time\": \"now-1d\",\n                \"username\": \"admin\",\n                \"group_id\":\"413304068690511\"\n              \n            }\n}"
 				},
-				"url": {
-					"raw": "http://WinSVR2016:9250/_render/template",
-					"protocol": "http",
-					"host": [
-						"WinSVR2016"
-					],
-					"port": "9250",
-					"path": [
-						"_render",
-						"template"
+				{
+					"name": "get only the source field of the document",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9200/bank/account/0/_source",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"0",
+								"_source"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "response filtering",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9200/bank/_search?q=mill&filter_path=took,hits.hits._id,hits.hits._score",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "mill"
+								},
+								{
+									"key": "filter_path",
+									"value": "took,hits.hits._id,hits.hits._score"
+								}
+							]
+						},
+						"description": "https://www.elastic.co/guide/en/elasticsearch/reference/5.6/common-options.html"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "mget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\" : [\"1\", \"2\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/bank/_mget",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_mget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mget Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"docs\" : [\n        {\n            \"_type\":\"account\",\n            \"_id\" : \"1\",\n             \"_source\" : [\"firstname\"]\n        },\n        {\n            \"_type\":\"typeB\",\n            \"_id\" : \"1\",\n            \"_source\" : false\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/bank/_mget",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"_mget"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reindex",
+			"item": [
+				{
+					"name": "basic reindex",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"source\": {\n    \"index\": \"bank\"\n  },\n  \"dest\": {\n    \"index\": \"bank-2\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/_reindex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_reindex"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reindex using query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"source\": {\n    \"index\": \"bank\"\n  },\n  \"dest\": {\n    \"index\": \"bank-2\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/_reindex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_reindex"
+							]
+						},
+						"description": "The source section supports all the elements that are supported in a search request. "
+					},
+					"response": []
+				},
+				{
+					"name": "reindex with limit on no. of docs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"source\": {\n    \"index\": \"bank\"\n  },\n  \"dest\": {\n    \"index\": \"bank-2\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/_reindex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_reindex"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reindex to change the name of a field",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"source\": {\n    \"index\": \"bank\"\n  },\n  \"dest\": {\n    \"index\": \"bank-2\"\n  },\n  \"script\": {\n    \"source\": \"ctx._source.name = ctx._source.remove(\\\"firstname\\\")\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/_reindex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_reindex"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The most basic form of _reindex just copies documents from one index to another.\n\nhttps://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-reindex.html",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "23b8ecd4-e857-459f-ba90-966c063a512c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "74343736-6c03-442f-b687-dca2e732ae7d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "search template",
+			"item": [
+				{
+					"name": "Get template by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_search/template/thread-dump-history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_search",
+								"template",
+								"thread-dump-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "render a template",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"thread-dump-history\",\n\t \"params\": {\n                \"instance_id\": \"localhost:cfusion:8503\",\n                \"max_time\": \"now\",\n                \"min_time\": \"now-1d\",\n                \"username\": \"admin\",\n                \"group_id\":\"413304068690511\"\n              \n            }\n}"
+						},
+						"url": {
+							"raw": "http://WinSVR2016:9250/_render/template",
+							"protocol": "http",
+							"host": [
+								"WinSVR2016"
+							],
+							"port": "9250",
+							"path": [
+								"_render",
+								"template"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "misc",
+			"item": [
+				{
+					"name": "getting error trace in response",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_search?size=abc&error_trace=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "abc"
+								},
+								{
+									"key": "error_trace",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "pass body in query param",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/_search?size=abc&error_trace=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "abc"
+								},
+								{
+									"key": "error_trace",
+									"value": "true"
+								}
+							]
+						},
+						"description": "This is useful for libraries which don't allow body in non-POST requests"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "Checking for existence of a document",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"1"
+							]
+						},
+						"description": "?v is used to get the header names"
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
+					]
+				},
+				{
+					"name": "term vectors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/bank/account/1/_termvectors?fields=balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"bank",
+								"account",
+								"1",
+								"_termvectors"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "balance"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get cluster health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200/_cat/health?v",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"health"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-encoding",
+									"value": "gzip",
+									"name": "content-encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "content-length",
+									"value": "192",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "text/plain; charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
+						}
 					]
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "load bulk data",
@@ -2204,181 +3455,6 @@
 					]
 				},
 				"description": "?v is used to get the header names"
-			},
-			"response": [
-				{
-					"name": "Get cluster health",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9200/_cat/health?v",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"_cat",
-								"health"
-							],
-							"query": [
-								{
-									"key": "v",
-									"value": null
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "content-encoding",
-							"value": "gzip",
-							"name": "content-encoding",
-							"description": "The type of encoding used on the data."
-						},
-						{
-							"key": "content-length",
-							"value": "192",
-							"name": "content-length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "content-type",
-							"value": "text/plain; charset=UTF-8",
-							"name": "content-type",
-							"description": "The mime type of this content"
-						}
-					],
-					"cookie": [],
-					"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-				}
-			]
-		},
-		{
-			"name": "getting error trace in response",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9200/bank/account/_search?size=abc&error_trace=true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"bank",
-						"account",
-						"_search"
-					],
-					"query": [
-						{
-							"key": "size",
-							"value": "abc"
-						},
-						{
-							"key": "error_trace",
-							"value": "true"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Get cluster health",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9200/_cat/health?v",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9200",
-							"path": [
-								"_cat",
-								"health"
-							],
-							"query": [
-								{
-									"key": "v",
-									"value": null
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "content-encoding",
-							"value": "gzip",
-							"name": "content-encoding",
-							"description": "The type of encoding used on the data."
-						},
-						{
-							"key": "content-length",
-							"value": "192",
-							"name": "content-length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "content-type",
-							"value": "text/plain; charset=UTF-8",
-							"name": "content-type",
-							"description": "The mime type of this content"
-						}
-					],
-					"cookie": [],
-					"body": "epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent\n1590675616 19:50:16  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%\n"
-				}
-			]
-		},
-		{
-			"name": "pass body in query param",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9200/bank/account/_search?size=abc&error_trace=true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"bank",
-						"account",
-						"_search"
-					],
-					"query": [
-						{
-							"key": "size",
-							"value": "abc"
-						},
-						{
-							"key": "error_trace",
-							"value": "true"
-						}
-					]
-				},
-				"description": "This is useful for libraries which don't allow body in non-POST requests"
 			},
 			"response": [
 				{
